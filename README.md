@@ -8,7 +8,7 @@ Backend
 1. Developed in NodeJS
 2. Deployed in Debian flavour of Linux - AWS EC2 instance
 3. One post endpoint '/' - to get base64 string of the screenshot 
-Body params 
+4. Body params 
   - url : the website to screenshot
   - height : height of the screenshot in pixels
   - width : width of the screenshot in pixels
