@@ -1,0 +1,28 @@
+.submit-button {
+  margin-left: 15px;
+  width: 100px;
+  height: 40px;
+}
+
+.title-center {
+  margin: 0 auto;
+}
+
+.preferences-panel {
+  width: 30%;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.image-preview{
+  border: 2px solid #ffa600;
+}

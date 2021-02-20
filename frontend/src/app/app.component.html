@@ -1,0 +1,70 @@
+<mat-toolbar color='primary'>
+  <span class="title-center">Screenshot Downloader</span>
+</mat-toolbar>
+
+<br>
+
+<div align='center'>
+  <mat-form-field style="width: 30%;">
+    <mat-label>Url to screenshot</mat-label>
+    <input matInput placeholder="www.google.com" (keyup.enter)="onSubmit()" [(ngModel)]="options.url">
+  </mat-form-field>
+
+
+  <br>
+
+  <div class="preferences-panel">
+    <mat-accordion>
+      <mat-expansion-panel #preferencesPanel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Preferences
+          </mat-panel-title>
+          <mat-panel-description>
+            Configure the screenshot
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-radio-group class="radio-group" [(ngModel)]="options.type">
+          <mat-radio-button class="radio-button" *ngFor="let format of imageFormats" [value]="format.value">
+            {{format.name}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <mat-form-field>
+          <mat-label>Height</mat-label>
+          <input matInput type="number" [(ngModel)]="options.height">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field>
+          <mat-label>Width</mat-label>
+          <input matInput type="number" [(ngModel)]="options.width">
+        </mat-form-field>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <br>
+  <button [disabled]='loading || !options.url' mat-raised-button class='submit-button' (click)="onSubmit(); preferencesPanel.close()"
+    color="primary">
+    <div align="center">
+      <span *ngIf='!loading'>
+        Capture
+      </span>
+      <span *ngIf='loading'>
+        <mat-spinner [diameter]="20"></mat-spinner>
+      </span>
+    </div>
+  </button>
+  <br>
+
+  <div *ngIf='result'>
+    <br><br> Preview : <br><br>
+    <img class="image-preview" width='600px' [src]="result" alt="something went wrong">
+    <br><br>
+    <button color="primary" mat-raised-button (click)="downloadFile()">Download</button>
+  </div>
+</div>
